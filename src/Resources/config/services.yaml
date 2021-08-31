@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    autoconfigure: true
+    public: false
+    autowire: true
+
+  Rinsvent\ExceptionBundle\EventListener\ExceptionListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception}
