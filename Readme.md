@@ -29,3 +29,25 @@ Exception bundle
   "trace": "..."
 }
 ```
+
+Зарегистрировать свой Enum со списком исключений можно например так
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\EventListener;
+
+use App\Exception\ExceptionEnum;
+use Rinsvent\Exception\AbstractException;
+use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
+
+#[AsEventListener(event: 'kernel.request', priority: 1000, method: 'onStart')]
+class StartConfigListener
+{
+    public function onStart(): void
+    {
+        AbstractException::$exceptionEnum = ExceptionEnum::class;
+    }
+}
+```
