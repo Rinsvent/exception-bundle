@@ -1,6 +1,6 @@
 {
     "name": "rinsvent/exception-bundle",
-    "description": "Data to dto bundle",
+    "description": "Exception bundle",
     "license": "MIT",
     "require": {
         "php": "^8.0",
