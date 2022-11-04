@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rinsvent\ExceptionBundle;
 
 use Rinsvent\Exception\AbstractException;
@@ -11,22 +13,19 @@ class Exception extends AbstractException implements HttpExceptionInterface
     protected int $statusCode = Response::HTTP_BAD_REQUEST;
 
     public function toArray() {
-        $message = [
-            'code_text' => $this->getCodeText(),
-            'message' => $this->getMessage()
+        return [
+            'codeText' => $this->getCodeText(),
+            'code' => $this->getCode(),
+            'summary' => $this->getSummary()
         ];
-        if ($this->getCode()) {
-            $message['code'] = $this->getCode();
-        }
-        return $message;
     }
 
-    public function getStatusCode()
+    public function getStatusCode(): int
     {
         return $this->statusCode;
     }
 
-    public function getHeaders()
+    public function getHeaders(): array
     {
         return [];
     }
